@@ -1,0 +1,79 @@
+---
+title: "Lista 3"
+output:
+  html_document:
+    df_print: paged
+---
+
+
+
+```{r}
+library(here)
+library(readxl)
+```
+
+#### Ex1
+
+Para estudar a associação entre gênero (1=Masc, 0=Fem) e idade (anos) e a preferência (1=sim, 0=não) pelo refrigerante Kcola, o seguinte modelo de regressão logística foi ajustado aos dados de 50 crianças escolhidas ao acaso:
+
+$\log(\frac{\pi_{i}*(x_{i}, w_{i})}{1-\pi_{i}*(x_{i}, w_{i})}) = \alpha + \beta x_{i} + \gamma(w_{i} - 5)$
+
+Em que xi(wi) representa o gênero (idade) da i-ésima criança e i(xi,wi) a probabilidade de uma criança do gênero xi y idade wi preferir Kcola. As siguientes estimativas para os parâmetros foram obtidas:
+
+```{r}
+table = read.csv(file = here('ep3/ex1', 'table.csv'), header=TRUE, sep=';')
+table
+```
+
+a-) Interprete os parâmetros do modelo por intermédio de chances e razões de chances
+
+```{r}
+
+```
+b-) Com as informações acima, estime a razão de chances de preferência por Kcola correspondente à comparação de crianças do mesmo gênero com 10 e 15 anos.
+```{r}
+
+```
+c-) Construa intervalos de confiança (com coeficiente de confiança aproximado de 95%) para  e  e traduza o resultado em linguagem não técnica.
+```{r}
+
+```
+d-) Estime a probabilidade de meninos com 15 anos preferirem Kcola.
+
+---
+
+#### Ex 2
+Obtenha os estimadores Ridge, Lasso e ElasticNet para os dados do exemplo 6.7 (arquivo esteira)
+Y = VO2; X = IMC e Carga; n = 28;
+
+```{r}
+esteira <- read_xls(here('data', 'esteira.xls'))
+esteira
+```
+
+---
+
+#### Ex3
+
+Obtenha os estimadores Ridge, Lasso e ElasticNet para os dados do Exemplo 6.11, com a variável Resposta sendo FC (Frequência Cardíaca).
+
+```{r}
+esforco = read_xls(here('data', 'esforco.xls'),  sheet="dados"); esforco
+```
+
+---
+
+##### Ex 4
+
+(a) Use a função *rnorm()* (simula valores de uma distribuição normal) do R para gerar um preditor X com n = 100 observações, bem como um erro ε também de comprimento 100.
+```{r}
+
+```
+(b) Simule um vetor de resposta Y , de comprimento n = 100 de acordo com o modelo
+$Y =\beta  + \beta_{1} x + \beta_{2}x$, na qual os parˆametros βi s˜ao constantes de suaescolha.
+
+```{r}
+
+```
+
+(c) Considere o modelo de (b), agora com os βi e ε desconhecidos, X como em (a) Y como em (b). Qual seria o melhor modelo usando R2 ajustado e BIC? (d) Para o modelo como em (c), obtenha os estimadores ridge e lasso. Use VC para selecionar o valor  ótimo de $\lambda$
