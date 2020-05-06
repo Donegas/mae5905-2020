@@ -1,0 +1,2267 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdftitle={Lista 3},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+\title{Lista 3}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(here)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## here() starts at /Users/tpetrone/mestrado/mae5905-2020
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(caret)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: lattice
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: ggplot2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(glmnet)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: Matrix
+\end{verbatim}
+
+\begin{verbatim}
+## Loaded glmnet 3.0-2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(readxl)}
+\KeywordTok{library}\NormalTok{(magrittr)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ex1}{%
+\paragraph{Ex1}\label{ex1}}
+
+Para estudar a associação entre gênero (1=Masc, 0=Fem) e idade (anos) e
+a preferência (1=sim, 0=não) pelo refrigerante Kcola, o seguinte modelo
+de regressão logística foi ajustado aos dados de 50 crianças escolhidas
+ao acaso:
+
+\(\log(\frac{\pi_{i}*(x_{i}, w_{i})}{1-\pi_{i}*(x_{i}, w_{i})}) = \alpha + \beta x_{i} + \gamma(w_{i} - 5)\)
+
+Em que \(x_{i}(w_{i})\) representa o gênero (idade) da i-ésima criança e
+\(\pi_{i}(x_{i}, w_{i})\) a probabilidade de uma criança do gênero
+\(x_{i}y\) idade \(w_{i}\) preferir Kcola. As siguientes estimativas
+para os parâmetros foram obtidas:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{table =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\DataTypeTok{file =} \KeywordTok{here}\NormalTok{(}\StringTok{'ep3/ex1'}\NormalTok{, }\StringTok{'table.csv'}\NormalTok{), }\DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{sep=}\StringTok{';'}\NormalTok{)}
+\NormalTok{table}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Parâmetros Estimativa Erro.Padrão Valor.p
+## 1       alfa       0,69        0,12  < 0,01
+## 2       beta       0,33        0,10  < 0,01
+## 3       gama      -0,03       0,005  < 0,01
+\end{verbatim}
+
+a-) Interprete os parâmetros do modelo por intermédio de chances e
+razões de chances
+
+Resposta:
+
+Assim como o modelo de regressão linear procura determinar a relação
+funcional entre a variável dependente e a variável independente,
+lembre-se de que, em um modelo de regressão linear, a função de link é a
+função de identidade e, no modelo de regressão logística, o A função de
+link é a transformação do logit e possui o seguinte formato no seguinte
+problema
+
+\(\log(\frac{\pi_{i}*(x_{i}, w_{i})}{1-\pi_{i}*(x_{i}, w_{i})}) = \alpha + \beta x_{i} + \gamma(w_{i} - 5)\)
+
+Observa-se que todas as variáveis são significativas e que existem duas
+variáveis preditoras, o gênero (binário) e a idade (numérica). Devemos
+ter em mente que, quando os coeficientes forem positivos, a chance será
+maior que 1 e, se for negativa, será menor que 1. Antes de apresentar a
+interpretação em termos de odds e odds ratio, será apresentada a
+interpretação formal dos coeficientes. por exemplo, na interpretação de
+gênero. Quando o sexo varia, ou seja, de 0 a 1, as probabilidades
+logarítmicas da preferência de kcola mudam em 0,33. Essa interpretação,
+embora exata, significa pouco para a maioria dos analistas. Está correto
+em um modelo de regressão logística. Portanto, podemos dizer que o valor
+do parâmetro beta é a quantidade da taxa de alteração na preferência do
+Kcola com base na alteração de uma unidade no gênero. Como o gênero é
+binário, é a quantidade de mudança na preferência de Kcola quando o
+gênero passa de 0 a 1 em valor. (Joseph M. Hilbe Pág. 15). A chance de
+preferir o Kola, dado que é um homem, é exp (0,33) ou 1,39 mais provável
+de preferir o Kola que é uma mulher. Outra maneira de expressar isso é a
+chance de preferir Kola, pois ela é uma menina é 1 / exp (0,33) ou 0,72
+vezes maior do que as chances de ser um menino. A razão de chances para
+o menino ser homem = = 1 é a razão de chances de preferir a kola como um
+menino à chance de preferir a kola como uma menina. = 1.9347. esto Isso
+indica que uma condição ou evento com maior probabilidade de ocorrência
+não é um grupo de crianças do sexo masculino. A razão de chances do
+menino ser mulher = = 0 é a razão de chances de preferir a kola como uma
+menina à chance de preferir a kola como um menino. = 0,51685. Esse valor
+indica que, quanto menor a probabilidade de não ser o primeiro grupo que
+o segundo, as mulheres foram consideradas como o primeiro grupo. As
+expressões podem variar quando se considera quem é o primeiro ou o
+segundo grupo, no entanto, as interpretações não variam. No caso da
+idade, estamos com uma variável contínua e é interpretada da seguinte
+forma, El chances de preferir la Kola dado que es un niño de wi años es
+exp(-0,03) o 0,97 mas probable de preferir la kola conforme van
+transcurriendo los años. As chances de preferir o Kcola, dado que ele é
+uma criança de wi anos, é exp (-0,03) ou 0,97 mais probabilidade de
+preferir o Kcola com o passar dos anos. Devemos lembrar que o estudo
+analisa apenas crianças. Como o preditor contínuo, é mais complexo, no
+entanto, possui a mesma lógica, a razão de chance da criança odds (11) /
+odds (10) e uma razão de chances, que é o mesmo valor para todos os
+pares de valores não preditores. Seja a razão de chances para idade de
+1,01 e uma resposta para interrupção, podemos afirmar que a chance de
+preferência da Kola é 1\% maior para cada 1 ano de idade de uma criança.
+(Joseph M. Hilbe Pág. 32).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+b-) Com as informações acima, estime a razão de chances de preferência
+por Kcola correspondente à comparação de crianças do mesmo gênero com 10
+e 15 anos.
+
+c-) Construa intervalos de confiança (com coeficiente de confiança
+aproximado de 95\%) para e e traduza o resultado em linguagem não
+técnica.
+
+Resposta: Antes de construir os intervalos de confiança, devemos
+recordar que um coeficiente de \texttt{0} não tem nenhum efeito na
+compreensõa da variável resposta de interesse. (Joseph M. Hilbe Pág. 24)
+
+Os intervalos de confiança de 95\% com base no modelo logístico são
+calculados da seguinte forma:
+
+li\textless{}- coef - qnorm(.975) * se
+
+ls \textless{}- coef +qnorm(.975) * se
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qnorm}\NormalTok{(}\FloatTok{0.975}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.959964
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y=}\KeywordTok{exp}\NormalTok{(}\FloatTok{0.33}\NormalTok{); y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.390968
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{w=}\KeywordTok{exp}\NormalTok{(}\OperatorTok{-}\FloatTok{0.03}\NormalTok{); w}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9704455
+\end{verbatim}
+
+\(\exp(\beta)\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{LI=y}\OperatorTok{-}\KeywordTok{qnorm}\NormalTok{(}\FloatTok{0.975}\NormalTok{)}\OperatorTok{*}\FloatTok{0.10}\NormalTok{; LI}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.194972
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{LS=y}\OperatorTok{+}\KeywordTok{qnorm}\NormalTok{(}\FloatTok{0.975}\NormalTok{)}\OperatorTok{*}\FloatTok{0.10}\NormalTok{; LS}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.586965
+\end{verbatim}
+
+\(\exp(\gamma)\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{LI=w}\OperatorTok{-}\KeywordTok{qnorm}\NormalTok{(}\FloatTok{0.975}\NormalTok{)}\OperatorTok{*}\FloatTok{0.005}\NormalTok{; LI}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9606457
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{LS=w}\OperatorTok{+}\KeywordTok{qnorm}\NormalTok{(}\FloatTok{0.975}\NormalTok{)}\OperatorTok{*}\FloatTok{0.005}\NormalTok{; LS}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9802454
+\end{verbatim}
+
+d-) Estime a probabilidade de meninos com 15 anos preferirem Kcola.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{exp15=}\FloatTok{0.69+0.33}\OperatorTok{*}\DecValTok{1}\FloatTok{-0.03}\OperatorTok{*}\NormalTok{(}\DecValTok{15-5}\NormalTok{); exp15}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.72
+\end{verbatim}
+
+A probabilidade é de 0,72 de que uma criança de gênero homens dado que
+tem 15 anos prefira kcola.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{ex-2}{%
+\paragraph{Ex 2}\label{ex-2}}
+
+Obtenha os estimadores Ridge, Lasso e ElasticNet para os dados do
+exemplo 6.7 (arquivo esteira) Y = VO2; X = IMC e Carga; n = 28;
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{esteira <-}\StringTok{ }\KeywordTok{read_xls}\NormalTok{(}\KeywordTok{here}\NormalTok{(}\StringTok{'data'}\NormalTok{, }\StringTok{'esteira.xls'}\NormalTok{), }\DataTypeTok{range =} \KeywordTok{cell_cols}\NormalTok{(}\StringTok{"B:D"}\NormalTok{))}
+\NormalTok{esteira}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 28 x 3
+##      VO2   IMC carga
+##    <dbl> <dbl> <dbl>
+##  1  14.1  24.3    71
+##  2  16.3  27.7    91
+##  3   9.9  23.9    37
+##  4   9.5  17.5    32
+##  5  16.8  24.5    95
+##  6  20.4  26.4   115
+##  7  11.8  24.0    56
+##  8  29    21.0   104
+##  9  20.3  19.0   115
+## 10  14.3  27.1   110
+## # ... with 18 more rows
+\end{verbatim}
+
+Resposta:
+
+Num primero momento, vamos aplicar a Validação Cruzada com diferentes
+metodos para estimar a melhor penalização (λ). A título de comparação
+seram feitos três diferentes algoritmos, como apresentado nas salas de
+aula Usando o Pacote glmnet com k=4 para obter os estimadores de Ridge,
+Lasso e ElasticNet.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{names}\NormalTok{(esteira)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "VO2"   "IMC"   "carga"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{exemplos_treino <-}\StringTok{ }\NormalTok{esteira}\OperatorTok{$}\NormalTok{VO2 }\OperatorTok{%>%}\StringTok{ }\KeywordTok{createDataPartition}\NormalTok{(}\DataTypeTok{p=}\FloatTok{0.8}\NormalTok{, }\DataTypeTok{list=}\OtherTok{FALSE}\NormalTok{)}
+\NormalTok{train <-}\StringTok{ }\NormalTok{esteira[}\KeywordTok{c}\NormalTok{(exemplos_treino), ]}
+\NormalTok{test <-}\StringTok{ }\NormalTok{esteira[}\OperatorTok{-}\NormalTok{exemplos_treino, ]}
+
+\NormalTok{X <-}\StringTok{ }\KeywordTok{model.matrix}\NormalTok{(VO2}\OperatorTok{~}\NormalTok{., train) [,}\OperatorTok{-}\DecValTok{1}\NormalTok{]}
+\NormalTok{X_test <-}\StringTok{ }\KeywordTok{model.matrix}\NormalTok{(VO2}\OperatorTok{~}\NormalTok{., test) [,}\OperatorTok{-}\DecValTok{1}\NormalTok{]}
+\NormalTok{y <-}\StringTok{ }\NormalTok{train}\OperatorTok{$}\NormalTok{VO2}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ridge}{%
+\subparagraph{Ridge}\label{ridge}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cv_ridge <-}\StringTok{ }\KeywordTok{cv.glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha =} \DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per
+## fold
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cv_ridge}\OperatorTok{$}\NormalTok{lambda.min}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.456847
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model_ridge <-}\StringTok{ }\KeywordTok{glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha =} \DecValTok{0}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ cv_ridge}\OperatorTok{$}\NormalTok{lambda.min)}
+\KeywordTok{coef}\NormalTok{(model_ridge)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 3 x 1 sparse Matrix of class "dgCMatrix"
+##                     s0
+## (Intercept) 15.7950883
+## IMC         -0.3708380
+## carga        0.1093302
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ridge <-}\StringTok{ }\KeywordTok{model.matrix}\NormalTok{(VO2 }\OperatorTok{~}\NormalTok{., test)[,}\OperatorTok{-}\DecValTok{1}\NormalTok{]}
+\NormalTok{predict_ridge <-}\StringTok{ }\NormalTok{model_ridge }\OperatorTok{%>%}\StringTok{ }\KeywordTok{predict}\NormalTok{(X_test) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{as.vector}\NormalTok{()}
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{RMSE =} \KeywordTok{RMSE}\NormalTok{(predict_ridge, test}\OperatorTok{$}\NormalTok{VO2), }\DataTypeTok{Rsquare =} \KeywordTok{R2}\NormalTok{(predict_ridge, test}\OperatorTok{$}\NormalTok{VO2))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       RMSE   Rsquare
+## 1 4.167476 0.9921821
+\end{verbatim}
+
+\hypertarget{lasso}{%
+\subparagraph{Lasso}\label{lasso}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{cv_lasso =}\StringTok{ }\KeywordTok{cv.glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per
+## fold
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cv_lasso}\OperatorTok{$}\NormalTok{lambda.min}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.03973422
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model_lasso <-}\StringTok{ }\KeywordTok{glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha =} \DecValTok{1}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ cv_lasso}\OperatorTok{$}\NormalTok{lambda.min)}
+\KeywordTok{coef}\NormalTok{(model_lasso)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 3 x 1 sparse Matrix of class "dgCMatrix"
+##                     s0
+## (Intercept) 15.4945887
+## IMC         -0.3935779
+## carga        0.1174407
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{predict_lasso <-}\StringTok{ }\NormalTok{model_lasso }\OperatorTok{%>%}\StringTok{ }\KeywordTok{predict}\NormalTok{(X_test) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{as.vector}\NormalTok{()}
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{RMSE =} \KeywordTok{RMSE}\NormalTok{(predict_lasso, test}\OperatorTok{$}\NormalTok{VO2),}\DataTypeTok{Rsquare =} \KeywordTok{R2}\NormalTok{(predict_lasso, test}\OperatorTok{$}\NormalTok{VO2))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       RMSE   Rsquare
+## 1 3.990962 0.9920535
+\end{verbatim}
+
+\hypertarget{elastic-net}{%
+\subparagraph{Elastic Net}\label{elastic-net}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{model_elastic <-}\StringTok{ }\KeywordTok{train}\NormalTok{(VO2}\OperatorTok{~}\NormalTok{., }\DataTypeTok{data=}\NormalTok{train, }\DataTypeTok{method=}\StringTok{"glmnet"}\NormalTok{, }\DataTypeTok{trControl =} \KeywordTok{trainControl}\NormalTok{(}\StringTok{"cv"}\NormalTok{, }\DataTypeTok{number =} \DecValTok{10}\NormalTok{), }\DataTypeTok{tuneLenght =} \DecValTok{10}\NormalTok{)}
+\NormalTok{model_elastic}\OperatorTok{$}\NormalTok{bestTune}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   alpha   lambda
+## 6  0.55 0.913694
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{coef}\NormalTok{(model_elastic}\OperatorTok{$}\NormalTok{finalModel, model_elastic}\OperatorTok{$}\NormalTok{bestTune}\OperatorTok{$}\NormalTok{lambda)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 3 x 1 sparse Matrix of class "dgCMatrix"
+##                       1
+## (Intercept) 13.83170680
+## IMC         -0.24061305
+## carga        0.09779157
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X_elastic =}\StringTok{ }\KeywordTok{model.matrix}\NormalTok{(VO2}\OperatorTok{~}\NormalTok{., test)[,}\OperatorTok{-}\DecValTok{1}\NormalTok{]}
+\NormalTok{predict_elastic <-}\StringTok{ }\NormalTok{model_elastic }\OperatorTok{%>%}\StringTok{ }\KeywordTok{predict}\NormalTok{(X_elastic)}
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{RMSE =} \KeywordTok{RMSE}\NormalTok{(predict_elastic, test}\OperatorTok{$}\NormalTok{VO2), }\DataTypeTok{Rsquare =} \KeywordTok{R2}\NormalTok{(predict_elastic, test}\OperatorTok{$}\NormalTok{VO2))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       RMSE   Rsquare
+## 1 4.462607 0.9889346
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{table =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\DataTypeTok{file =} \KeywordTok{here}\NormalTok{(}\StringTok{'ep3/ex2'}\NormalTok{, }\StringTok{'table.csv'}\NormalTok{), }\DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :
+## EOF within quoted string
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{table}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           X  Ridge   Lasso Elastic
+## 1    Lambda  0,457    0,04   0,914
+## 2 Intercept 15,795  15,494  13,832
+## 3       IMC -0,371  -0,394  -0,241
+## 4     Carga  0,109   0,117   0,098
+## 5      RMSE  4,167   3,991   4,463
+## 6        R2  0,992 0,992,0   989\n
+\end{verbatim}
+
+Os três valores lambda são diferentes considerando a regularização e
+usando validação cruzada para validar a capacidade de generalização do
+modelo de regressão, Nesse procedimento, os dados não foram
+padronizados. Nesta parte, tentamos comparar os resultados usando
+diferentes algoritmos e observa-se que o R2 é maior pelo método de Ridge
+e Lasso, porém o RMSE é menor pelo método do Lasso em os algoritmos. Os
+três valores de R2 são muitos próximos, mas o menor RMSE é mais baixo
+por tanto o modelo LASSO presenta maior precisão, que os outro dois
+modelos.\\
+Essa medida de ajuste indica quão próximos os pontos dos valores
+observados estão dos valores previstos do modelo, portanto, procura-se o
+menor possível para fornecer uma estimativa melhor na previsão do
+modelo. Nesse caso, o método Lasso fornece melhores previsões para o
+modelo de regressão. Essa medida de ajuste indica quão próximos os
+pontos dos valores observados estão dos valores previstos do modelo,
+portanto, procura-se o menor possível para fornecer uma estimativa
+melhor na previsão do modelo. Nesse caso, o método Lasso fornece
+melhores previsões para o modelo de regressão.
+
+Num segundo momento, vamos aplicar a Validação Cruzada com diferentes
+tamanhos para estimar a melhor penalização (λ). A título de comparação
+foram feitos três diferentes testes: k=4, escolhido de forma a diminuir
+a perda de informação na divisão do dataset (com 28 observações); k=10,
+o mais bem aceito tamanho de k da literatura e k=n, que força uma
+validação cruzada leave-one-out (LOOCV), bastante recomendada para
+conjuntos pequenos. Os dados também foram centralizados, o que é uma boa
+prática para os modelos de regressão aqui utilizados.
+
+\hypertarget{teste-com-diferentes-ks-para-k-fold-cross-validation-sem-hold-out}{%
+\subparagraph{Teste com diferentes Ks para K-Fold Cross-Validation (sem
+hold-out)}\label{teste-com-diferentes-ks-para-k-fold-cross-validation-sem-hold-out}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{esteira <-}\StringTok{ }\KeywordTok{read_xls}\NormalTok{(}\KeywordTok{here}\NormalTok{(}\StringTok{'data'}\NormalTok{, }\StringTok{'esteira.xls'}\NormalTok{), }\DataTypeTok{range =} \KeywordTok{cell_cols}\NormalTok{(}\StringTok{"B:D"}\NormalTok{))}
+\NormalTok{esteira}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 28 x 3
+##      VO2   IMC carga
+##    <dbl> <dbl> <dbl>
+##  1  14.1  24.3    71
+##  2  16.3  27.7    91
+##  3   9.9  23.9    37
+##  4   9.5  17.5    32
+##  5  16.8  24.5    95
+##  6  20.4  26.4   115
+##  7  11.8  24.0    56
+##  8  29    21.0   104
+##  9  20.3  19.0   115
+## 10  14.3  27.1   110
+## # ... with 18 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{names}\NormalTok{(esteira)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "VO2"   "IMC"   "carga"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# centralizando o conjunto}
+\NormalTok{y <-}\StringTok{ }\NormalTok{esteira }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(VO2) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{scale}\NormalTok{(}\DataTypeTok{center =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{scale =} \OtherTok{FALSE}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{as.matrix}\NormalTok{()}
+\NormalTok{X <-}\StringTok{ }\NormalTok{esteira }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{VO2) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{as.matrix}\NormalTok{()}
+
+\CommentTok{# Realiza o k-fold Cross-Validation pra escolher o Lambda}
+\CommentTok{# Vetor lambdas_to_try de -3 a 5, com tamanho 100}
+\NormalTok{lambdas_to_try <-}\StringTok{ }\DecValTok{10}\OperatorTok{^}\KeywordTok{seq}\NormalTok{(}\OperatorTok{-}\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DataTypeTok{length.out =} \DecValTok{100}\NormalTok{)}
+
+\NormalTok{ridge_cv_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\KeywordTok{cv.glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha =} \DecValTok{0}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ lambdas_to_try, }\DataTypeTok{standardize =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{nfolds =} \DecValTok{4}\NormalTok{)}
+
+\NormalTok{ridge_cv_}\DecValTok{10}\NormalTok{ <-}\StringTok{ }\KeywordTok{cv.glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha =} \DecValTok{0}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ lambdas_to_try, }\DataTypeTok{standardize =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{nfolds =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per
+## fold
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Para LeaveOneOut CV}
+\NormalTok{n =}\StringTok{ }\KeywordTok{length}\NormalTok{(y)  }\CommentTok{#n = 28}
+\NormalTok{ridge_cv_n <-}\StringTok{ }\KeywordTok{cv.glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha =} \DecValTok{0}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ lambdas_to_try, }\DataTypeTok{standardize =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{nfolds =}\NormalTok{ n)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per
+## fold
+\end{verbatim}
+
+\hypertarget{plots-dos-resultados-de-cv-para-ridge}{%
+\paragraph{Plots dos resultados de CV para
+RIDGE}\label{plots-dos-resultados-de-cv-para-ridge}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(ridge_cv_}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ep3_files/figure-latex/unnamed-chunk-28-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(ridge_cv_}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ep3_files/figure-latex/unnamed-chunk-29-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(ridge_cv_n)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ep3_files/figure-latex/unnamed-chunk-30-1.pdf}
+
+Este gráfico permite ver a sequência dos valores lambda e o valor mínimo
+está entre as linhas verticais de cada gráfico, que são 0.3199267, 0.001
+e 0,1519911. Esse ponto no eixo x do gráfico é onde o menor erro de
+precisão é obtido.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{print}\NormalTok{(}\KeywordTok{list}\NormalTok{(ridge_cv_}\DecValTok{4}\OperatorTok{$}\NormalTok{lambda.min, ridge_cv_}\DecValTok{10}\OperatorTok{$}\NormalTok{lambda.min, ridge_cv_n}\OperatorTok{$}\NormalTok{lambda.min))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] 0.3199267
+## 
+## [[2]]
+## [1] 0.001
+## 
+## [[3]]
+## [1] 0.1519911
+\end{verbatim}
+
+\hypertarget{fazendo-o-fit-do-modelo-com-glmnet}{%
+\paragraph{Fazendo o Fit do Modelo com
+glmnet}\label{fazendo-o-fit-do-modelo-com-glmnet}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ridge_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\KeywordTok{glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha=}\DecValTok{0}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ ridge_cv_}\DecValTok{4}\OperatorTok{$}\NormalTok{lambda.min, }\DataTypeTok{standardize =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{ridge_}\DecValTok{10}\NormalTok{ <-}\StringTok{ }\KeywordTok{glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha=}\DecValTok{0}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ ridge_cv_}\DecValTok{10}\OperatorTok{$}\NormalTok{lambda.min, }\DataTypeTok{standardize =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{ridge_n <-}\StringTok{ }\KeywordTok{glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha=}\DecValTok{0}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ ridge_cv_n}\OperatorTok{$}\NormalTok{lambda.min, }\DataTypeTok{standardize =} \OtherTok{TRUE}\NormalTok{)}
+ 
+\KeywordTok{print}\NormalTok{(}\KeywordTok{list}\NormalTok{(}\KeywordTok{coef}\NormalTok{(ridge_}\DecValTok{4}\NormalTok{), }\KeywordTok{coef}\NormalTok{(ridge_}\DecValTok{10}\NormalTok{), }\KeywordTok{coef}\NormalTok{(ridge_n)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## 3 x 1 sparse Matrix of class "dgCMatrix"
+##                     s0
+## (Intercept) -2.8803718
+## IMC         -0.3894387
+## carga        0.1196038
+## 
+## [[2]]
+## 3 x 1 sparse Matrix of class "dgCMatrix"
+##                     s0
+## (Intercept) -2.9822702
+## IMC         -0.4130359
+## carga        0.1261502
+## 
+## [[3]]
+## 3 x 1 sparse Matrix of class "dgCMatrix"
+##                     s0
+## (Intercept) -2.9333809
+## IMC         -0.4015210
+## carga        0.1229638
+\end{verbatim}
+
+\hypertarget{prediuxe7uxe3o-de-ridge-para-modelos-com-diferentes-lambdas}{%
+\paragraph{Predição de Ridge para modelos com diferentes
+lambdas}\label{prediuxe7uxe3o-de-ridge-para-modelos-com-diferentes-lambdas}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y_predict_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(ridge_}\DecValTok{4}\NormalTok{, X)}
+\NormalTok{y_predict_}\DecValTok{10}\NormalTok{ <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(ridge_}\DecValTok{10}\NormalTok{, X)}
+\NormalTok{y_predict_n <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(ridge_n, X)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{cuxe1lculo-da-soma-dos-quadrados-dos-resuxedduos}{%
+\subparagraph{Cálculo da soma dos quadrados dos
+resíduos}\label{cuxe1lculo-da-soma-dos-quadrados-dos-resuxedduos}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ssr_cv_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\KeywordTok{t}\NormalTok{(y }\OperatorTok{-}\StringTok{ }\NormalTok{y_predict_}\DecValTok{4}\NormalTok{) }\OperatorTok{%*%}\StringTok{ }\NormalTok{(y }\OperatorTok{-}\StringTok{ }\NormalTok{y_predict_}\DecValTok{4}\NormalTok{)}
+\NormalTok{ssr_cv_}\DecValTok{10}\NormalTok{ <-}\StringTok{ }\KeywordTok{t}\NormalTok{(y }\OperatorTok{-}\StringTok{ }\NormalTok{y_predict_}\DecValTok{10}\NormalTok{) }\OperatorTok{%*%}\StringTok{ }\NormalTok{(y }\OperatorTok{-}\StringTok{ }\NormalTok{y_predict_}\DecValTok{10}\NormalTok{)}
+\NormalTok{ssr_cv_n <-}\StringTok{ }\KeywordTok{t}\NormalTok{(y }\OperatorTok{-}\StringTok{ }\NormalTok{y_predict_n) }\OperatorTok{%*%}\StringTok{ }\NormalTok{(y }\OperatorTok{-}\StringTok{ }\NormalTok{y_predict_n)}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{list}\NormalTok{(ssr_cv_}\DecValTok{4}\NormalTok{, ssr_cv_}\DecValTok{10}\NormalTok{, ssr_cv_n))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+##          VO2
+## VO2 235.7423
+## 
+## [[2]]
+##          VO2
+## VO2 233.7205
+## 
+## [[3]]
+##         VO2
+## VO2 234.203
+\end{verbatim}
+
+\hypertarget{cuxe1lculo-do-r2}{%
+\paragraph{Cálculo do R2}\label{cuxe1lculo-do-r2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rsq_ridge_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\KeywordTok{cor}\NormalTok{(y, y_predict_}\DecValTok{4}\NormalTok{)}\OperatorTok{^}\DecValTok{2}
+\NormalTok{rsq_ridge_}\DecValTok{10}\NormalTok{ <-}\StringTok{ }\KeywordTok{cor}\NormalTok{(y, y_predict_}\DecValTok{10}\NormalTok{)}\OperatorTok{^}\DecValTok{2}
+\NormalTok{rsq_ridge_n <-}\StringTok{ }\KeywordTok{cor}\NormalTok{(y, y_predict_n)}\OperatorTok{^}\DecValTok{2}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{list}\NormalTok{(rsq_ridge_}\DecValTok{4}\NormalTok{, rsq_ridge_}\DecValTok{10}\NormalTok{, rsq_ridge_n))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+##            s0
+## VO2 0.7589543
+## 
+## [[2]]
+##            s0
+## VO2 0.7589559
+## 
+## [[3]]
+##            s0
+## VO2 0.7589555
+\end{verbatim}
+
+\hypertarget{conclusuxe3o-ridge}{%
+\subparagraph{Conclusão Ridge}\label{conclusuxe3o-ridge}}
+
+\begin{itemize}
+\tightlist
+\item
+  R²: Os 3 testes são similares em ajuste, com R² aproximado de 0,759
+\item
+  Resíduos: Menor resíduo médio é com k=10
+\item
+  Variância: Menor variância estimada é k=4
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{lasso-1}{%
+\subsubsection{Lasso}\label{lasso-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{######################## LASSO ###########################}
+\NormalTok{lasso_cv_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\KeywordTok{cv.glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha=}\DecValTok{1}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ lambdas_to_try, }\DataTypeTok{standardize =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{nfolds =} \DecValTok{4}\NormalTok{)}
+\NormalTok{lasso_cv_}\DecValTok{10}\NormalTok{ <-}\StringTok{ }\KeywordTok{cv.glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha=}\DecValTok{1}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ lambdas_to_try, }\DataTypeTok{standardize =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{nfolds =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per
+## fold
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso_cv_n <-}\StringTok{ }\KeywordTok{cv.glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha=}\DecValTok{1}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ lambdas_to_try, }\DataTypeTok{standardize =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{nfolds =}\NormalTok{ n)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per
+## fold
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(lasso_cv_}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ep3_files/figure-latex/unnamed-chunk-37-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(lasso_cv_}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ep3_files/figure-latex/unnamed-chunk-38-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(lasso_cv_n)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ep3_files/figure-latex/unnamed-chunk-39-1.pdf}
+
+Este gráfico permite ver a sequência dos valores lambda e o valor mínimo
+está entre as linhas verticais de cada gráfico, que são 0.1519911,
+0.07220809 e 0.0869749. Esse ponto no eixo x do gráfico é onde o menor
+erro de precisão é obtido.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Lambdas}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{list}\NormalTok{(lasso_cv_}\DecValTok{4}\OperatorTok{$}\NormalTok{lambda.min, lasso_cv_}\DecValTok{10}\OperatorTok{$}\NormalTok{lambda.min, lasso_cv_n}\OperatorTok{$}\NormalTok{lambda.min))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] 0.1519911
+## 
+## [[2]]
+## [1] 0.07220809
+## 
+## [[3]]
+## [1] 0.0869749
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Modelos}
+\NormalTok{lasso_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\KeywordTok{glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha =} \DecValTok{1}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ lasso_cv_}\DecValTok{4}\OperatorTok{$}\NormalTok{lambda.min, }\DataTypeTok{standardize =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{lasso_}\DecValTok{10}\NormalTok{ <-}\StringTok{ }\KeywordTok{glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha =} \DecValTok{1}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ lasso_cv_}\DecValTok{10}\OperatorTok{$}\NormalTok{lambda.min, }\DataTypeTok{standardize =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{lasso_n <-}\StringTok{ }\KeywordTok{glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha =} \DecValTok{1}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ lasso_cv_n}\OperatorTok{$}\NormalTok{lambda.min, }\DataTypeTok{standardize =} \OtherTok{TRUE}\NormalTok{)}
+ 
+\KeywordTok{print}\NormalTok{(}\KeywordTok{list}\NormalTok{(}\KeywordTok{coef}\NormalTok{(lasso_}\DecValTok{4}\NormalTok{), }\KeywordTok{coef}\NormalTok{(lasso_}\DecValTok{10}\NormalTok{), }\KeywordTok{coef}\NormalTok{(lasso_n)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## 3 x 1 sparse Matrix of class "dgCMatrix"
+##                     s0
+## (Intercept) -3.7106853
+## IMC         -0.3664338
+## carga        0.1221916
+## 
+## [[2]]
+## 3 x 1 sparse Matrix of class "dgCMatrix"
+##                     s0
+## (Intercept) -3.3284984
+## IMC         -0.3909373
+## carga        0.1242809
+## 
+## [[3]]
+## 3 x 1 sparse Matrix of class "dgCMatrix"
+##                     s0
+## (Intercept) -3.3992363
+## IMC         -0.3864020
+## carga        0.1238942
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Predições}
+\NormalTok{y_lasso_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(lasso_}\DecValTok{4}\NormalTok{, X)}
+\NormalTok{y_lasso_}\DecValTok{10}\NormalTok{ <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(lasso_}\DecValTok{10}\NormalTok{, X)}
+\NormalTok{y_lasso_n <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(lasso_n, X)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Resíduos}
+\NormalTok{ssr_lasso_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\KeywordTok{t}\NormalTok{(y }\OperatorTok{-}\StringTok{ }\NormalTok{y_lasso_}\DecValTok{4}\NormalTok{) }\OperatorTok{%*%}\StringTok{ }\NormalTok{(y }\OperatorTok{-}\StringTok{ }\NormalTok{y_lasso_}\DecValTok{4}\NormalTok{)}
+\NormalTok{ssr_lasso_}\DecValTok{10}\NormalTok{ <-}\StringTok{ }\KeywordTok{t}\NormalTok{(y }\OperatorTok{-}\StringTok{ }\NormalTok{y_lasso_}\DecValTok{10}\NormalTok{) }\OperatorTok{%*%}\StringTok{ }\NormalTok{(y }\OperatorTok{-}\StringTok{ }\NormalTok{y_lasso_}\DecValTok{10}\NormalTok{)}
+\NormalTok{ssr_lasso_n <-}\StringTok{ }\KeywordTok{t}\NormalTok{(y }\OperatorTok{-}\StringTok{ }\NormalTok{y_lasso_n) }\OperatorTok{%*%}\StringTok{ }\NormalTok{(y }\OperatorTok{-}\StringTok{ }\NormalTok{y_lasso_n)}
+ 
+\KeywordTok{print}\NormalTok{(}\KeywordTok{list}\NormalTok{(ssr_lasso_}\DecValTok{4}\NormalTok{, ssr_lasso_}\DecValTok{10}\NormalTok{, ssr_lasso_n))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+##          VO2
+## VO2 235.0576
+## 
+## [[2]]
+##          VO2
+## VO2 234.0223
+## 
+## [[3]]
+##          VO2
+## VO2 234.1583
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Ajuste R²}
+\NormalTok{rsq_lasso_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\KeywordTok{cor}\NormalTok{(y, y_lasso_}\DecValTok{4}\NormalTok{)}\OperatorTok{^}\DecValTok{2}
+\NormalTok{rsq_lasso_}\DecValTok{10}\NormalTok{ <-}\StringTok{ }\KeywordTok{cor}\NormalTok{(y, y_lasso_}\DecValTok{10}\NormalTok{)}\OperatorTok{^}\DecValTok{2}
+\NormalTok{rsq_lasso_n <-}\StringTok{ }\KeywordTok{cor}\NormalTok{(y, y_lasso_n)}\OperatorTok{^}\DecValTok{2}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{list}\NormalTok{(rsq_lasso_}\DecValTok{4}\NormalTok{, rsq_lasso_}\DecValTok{10}\NormalTok{, rsq_lasso_n))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+##            s0
+## VO2 0.7585799
+## 
+## [[2]]
+##            s0
+## VO2 0.7588743
+## 
+## [[3]]
+##            s0
+## VO2 0.7588367
+\end{verbatim}
+
+\hypertarget{conclusuxe3o-lasso}{%
+\paragraph{Conclusão Lasso}\label{conclusuxe3o-lasso}}
+
+\begin{itemize}
+\tightlist
+\item
+  R²: Os 3 testes são similares em ajuste, com R² aproximado de 0,759
+\item
+  Resíduos: Menor resíduo médio é com k=4
+\item
+  Variância: Menor variância estimada é k=4
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Usando o Pacote Caret com k=4 para obter os estimadores de Ridge, Lasso
+e ElasticNet.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Separando o DataSet}
+\KeywordTok{names}\NormalTok{(esteira)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "VO2"   "IMC"   "carga"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# separando em dados de teste e treino para CV}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{exemplos_treino <-}\StringTok{ }\NormalTok{esteira}\OperatorTok{$}\NormalTok{VO2 }\OperatorTok{%>%}\StringTok{ }\KeywordTok{createDataPartition}\NormalTok{(}\DataTypeTok{p=}\FloatTok{0.8}\NormalTok{, }\DataTypeTok{list=}\OtherTok{FALSE}\NormalTok{)}
+
+\NormalTok{train <-}\StringTok{ }\NormalTok{esteira[}\KeywordTok{c}\NormalTok{(exemplos_treino), ]}
+\NormalTok{test <-}\StringTok{ }\NormalTok{esteira[}\OperatorTok{-}\NormalTok{exemplos_treino, ]}
+
+\NormalTok{train_center <-}\StringTok{ }\NormalTok{train }\OperatorTok{%>%}\StringTok{ }\KeywordTok{scale}\NormalTok{(}\DataTypeTok{center =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{scale =} \OtherTok{FALSE}\NormalTok{)}
+\NormalTok{test_center <-}\StringTok{ }\NormalTok{test }\OperatorTok{%>%}\StringTok{ }\KeywordTok{scale}\NormalTok{(}\DataTypeTok{center =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{scale =} \OtherTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Variaveis de predição}
+\NormalTok{X <-}\StringTok{ }\KeywordTok{model.matrix}\NormalTok{(VO2}\OperatorTok{~}\NormalTok{., train) [,}\OperatorTok{-}\DecValTok{1}\NormalTok{] }\CommentTok{# n = 24}
+\NormalTok{y <-}\StringTok{ }\NormalTok{train}\OperatorTok{$}\NormalTok{VO2}
+
+\NormalTok{X_center <-}\StringTok{ }\KeywordTok{model.matrix}\NormalTok{(VO2}\OperatorTok{~}\NormalTok{., }\KeywordTok{as.data.frame}\NormalTok{(train_center)) [,}\OperatorTok{-}\DecValTok{1}\NormalTok{]}
+\NormalTok{y_center <-}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(train_center)}\OperatorTok{$}\NormalTok{VO2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#usando o pacote caret}
+\CommentTok{#Definindo o Range possível de Lambda}
+\NormalTok{lambda <-}\StringTok{ }\DecValTok{10}\OperatorTok{^}\KeywordTok{seq}\NormalTok{(}\OperatorTok{-}\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DataTypeTok{length =} \DecValTok{100}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#ridge}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{ridge <-}\StringTok{ }\KeywordTok{train}\NormalTok{(VO2}\OperatorTok{~}\NormalTok{., }\DataTypeTok{data =}\NormalTok{ train, }\DataTypeTok{method =} \StringTok{"glmnet"}\NormalTok{, }\DataTypeTok{trControl =} \KeywordTok{trainControl}\NormalTok{(}\StringTok{"cv"}\NormalTok{, }\DataTypeTok{number =} \DecValTok{4}\NormalTok{), }\DataTypeTok{tuneGrid =} \KeywordTok{expand.grid}\NormalTok{(}\DataTypeTok{alpha =} \DecValTok{0}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ lambda))}
+\NormalTok{ridge}\OperatorTok{$}\NormalTok{bestTune}\OperatorTok{$}\NormalTok{lambda}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.072267
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{coef}\NormalTok{(ridge}\OperatorTok{$}\NormalTok{finalModel, ridge}\OperatorTok{$}\NormalTok{bestTune}\OperatorTok{$}\NormalTok{lambda)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 3 x 1 sparse Matrix of class "dgCMatrix"
+##                       1
+## (Intercept) 15.95962358
+## IMC         -0.33301819
+## carga        0.09901755
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{predictions_ridge <-}\StringTok{ }\NormalTok{ridge }\OperatorTok{%>%}\StringTok{ }\KeywordTok{predict}\NormalTok{(test)}
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{RMSE =} \KeywordTok{RMSE}\NormalTok{(predictions_ridge, test}\OperatorTok{$}\NormalTok{VO2),}\DataTypeTok{Rsquare =} \KeywordTok{R2}\NormalTok{(predictions_ridge, test}\OperatorTok{$}\NormalTok{VO2))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       RMSE   Rsquare
+## 1 4.421628 0.9920914
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Lasso}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{lasso <-}\StringTok{ }\KeywordTok{train}\NormalTok{(VO2}\OperatorTok{~}\NormalTok{., }\DataTypeTok{data =}\NormalTok{ train, }\DataTypeTok{method =} \StringTok{"glmnet"}\NormalTok{, }\DataTypeTok{trControl =} \KeywordTok{trainControl}\NormalTok{(}\StringTok{"cv"}\NormalTok{, }\DataTypeTok{number =} \DecValTok{4}\NormalTok{), }\DataTypeTok{tuneGrid =} \KeywordTok{expand.grid}\NormalTok{(}\DataTypeTok{alpha =} \DecValTok{1}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ lambda))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in nominalTrainWorkflow(x = x, y = y, wts = weights, info = trainInfo, :
+## There were missing values in resampled performance measures.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso}\OperatorTok{$}\NormalTok{bestTune}\OperatorTok{$}\NormalTok{lambda}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.6135907
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{coef}\NormalTok{(lasso}\OperatorTok{$}\NormalTok{finalModel, lasso}\OperatorTok{$}\NormalTok{bestTune}\OperatorTok{$}\NormalTok{lambda)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 3 x 1 sparse Matrix of class "dgCMatrix"
+##                      1
+## (Intercept) 13.0951175
+## IMC         -0.2294885
+## carga        0.1021958
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{predictions_lasso =}\StringTok{ }\NormalTok{lasso }\OperatorTok{%>%}\StringTok{ }\KeywordTok{predict}\NormalTok{(test)}
+
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{RMSE =} \KeywordTok{RMSE}\NormalTok{(predictions_lasso, test}\OperatorTok{$}\NormalTok{VO2),}\DataTypeTok{Rsquare =} \KeywordTok{R2}\NormalTok{(predictions_lasso, test}\OperatorTok{$}\NormalTok{VO2))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       RMSE  Rsquare
+## 1 4.352134 0.988097
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Elastic (deveria ser o mesmo do anterior)}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{elastic <-}\StringTok{ }\KeywordTok{train}\NormalTok{(VO2}\OperatorTok{~}\NormalTok{., }\DataTypeTok{data =}\NormalTok{ train, }\DataTypeTok{method =} \StringTok{"glmnet"}\NormalTok{, }\DataTypeTok{trControl =} \KeywordTok{trainControl}\NormalTok{(}\StringTok{"cv"}\NormalTok{, }\DataTypeTok{number =} \DecValTok{4}\NormalTok{), }\DataTypeTok{tuneLength =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in nominalTrainWorkflow(x = x, y = y, wts = weights, info = trainInfo, :
+## There were missing values in resampled performance measures.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{elastic}\OperatorTok{$}\NormalTok{bestTune}\OperatorTok{$}\NormalTok{lambda}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.7411253
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{coef}\NormalTok{(elastic}\OperatorTok{$}\NormalTok{finalModel, elastic}\OperatorTok{$}\NormalTok{bestTune}\OperatorTok{$}\NormalTok{lambda)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 3 x 1 sparse Matrix of class "dgCMatrix"
+##                      1
+## (Intercept) 13.2935366
+## IMC         -0.2282714
+## carga        0.1000341
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{predictions_elastic =}\StringTok{ }\NormalTok{elastic }\OperatorTok{%>%}\StringTok{ }\KeywordTok{predict}\NormalTok{(test)}
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{RMSE =} \KeywordTok{RMSE}\NormalTok{(predictions_elastic, test}\OperatorTok{$}\NormalTok{VO2), }\DataTypeTok{Rsquare =} \KeywordTok{R2}\NormalTok{(predictions_elastic, test}\OperatorTok{$}\NormalTok{VO2)) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       RMSE   Rsquare
+## 1 4.406432 0.9882411
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{models <-}\StringTok{ }\KeywordTok{list}\NormalTok{(}\DataTypeTok{ridge =}\NormalTok{ ridge, }\DataTypeTok{lasso =}\NormalTok{ lasso, }\DataTypeTok{elastic =}\NormalTok{ elastic)}
+\KeywordTok{resamples}\NormalTok{(models) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summary}\NormalTok{( }\DataTypeTok{metric =} \StringTok{"RMSE"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## summary.resamples(object = ., metric = "RMSE")
+## 
+## Models: ridge, lasso, elastic 
+## Number of resamples: 4 
+## 
+## RMSE 
+##             Min.  1st Qu.   Median     Mean  3rd Qu.     Max. NA's
+## ridge   1.180107 1.995442 2.550113 2.768807 3.323478 4.794894    0
+## lasso   1.113352 1.721226 2.360215 2.684799 3.323787 4.905414    0
+## elastic 1.182216 1.701768 2.337419 2.694514 3.330165 4.921004    0
+\end{verbatim}
+
+Ao comparar o desempenho do melhor algoritmo usando o Pacote Caret com k
+= 4 no modelo de regressão, a estimativa de regressão de Ridge tem um
+desempenho melhor usando este pacote.
+
+Nesta parte, observa-se que os valores lambda não estão tão distantes
+dos mostrados no pacote gmlnet; no entanto, os resultados dos
+coeficientes do modelo de regressão são muito próximos. No entanto,
+podemos observar que há uma diferença mínima entre R2 e RMSE, mas, ao
+escolher, o melhor modelo preditivo é sempre procurado e o algoritmo
+Elastic Net fornece um RMSE menor, o que indica que ele fornece uma
+melhor previsão do modelo. Além disso, podemos mencionar que nos três
+casos em que trabalhamos com uma estimativa centralizada, o RMSE é menor
+e os coeficientes associados aos regressores nos modelos de rede de
+Ridge e Elastic são mantidos e no modelo de Lasso há uma variação.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{ex3}{%
+\paragraph{Ex3}\label{ex3}}
+
+Obtenha os estimadores Ridge, Lasso e ElasticNet para os dados do
+Exemplo 6.11, com a variável Resposta sendo FC (Frequência Cardíaca).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{esforco =}\StringTok{ }\KeywordTok{read_xlsx}\NormalTok{(}\KeywordTok{here}\NormalTok{(}\StringTok{'ep3/ex3'}\NormalTok{, }\StringTok{'esforco.xlsx'}\NormalTok{))}
+\NormalTok{esforco}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 127 x 5
+##       FC Idade  Peso Superfície   IMC
+##    <dbl> <dbl> <dbl>      <dbl> <dbl>
+##  1    89    38    54       1.48  24.3
+##  2    69    49    80       1.89  27.7
+##  3    82    65    56       1.52  23.9
+##  4    89    52    78       1.94  25.5
+##  5    82    52    59       1.59  24.0
+##  6    75    58    62       1.57  27.6
+##  7    89    24    42       1.36  17.5
+##  8    91    39    55       1.48  24.8
+##  9   101    48    77       1.8   30.1
+## 10   120    50    81       1.94  27.7
+## # ... with 117 more rows
+\end{verbatim}
+
+Inicialmente, o trabalho será realizado sem considerar o relacionamento
+entre as variáveis, aplicaremos apenas os métodos de regularização
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Holdout}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{train_samples <-}\StringTok{ }\NormalTok{esforco}\OperatorTok{$}\NormalTok{FC }\OperatorTok{%>%}\StringTok{ }\KeywordTok{createDataPartition}\NormalTok{(}\DataTypeTok{p=}\FloatTok{0.8}\NormalTok{, }\DataTypeTok{list=}\OtherTok{FALSE}\NormalTok{)}
+
+\NormalTok{treino <-}\StringTok{ }\NormalTok{esforco[}\KeywordTok{c}\NormalTok{(train_samples), ]}
+\NormalTok{teste <-}\StringTok{ }\NormalTok{esforco[}\OperatorTok{-}\NormalTok{train_samples, ]}
+\NormalTok{X <-}\StringTok{ }\KeywordTok{model.matrix}\NormalTok{(FC}\OperatorTok{~}\NormalTok{., treino)[,}\OperatorTok{-}\DecValTok{1}\NormalTok{]}
+\NormalTok{y <-}\StringTok{ }\NormalTok{treino}\OperatorTok{$}\NormalTok{FC}
+\NormalTok{treino_center <-}\StringTok{ }\NormalTok{treino }\OperatorTok{%>%}\StringTok{ }\KeywordTok{scale}\NormalTok{(}\DataTypeTok{center =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{scale =} \OtherTok{FALSE}\NormalTok{)}
+\NormalTok{teste_center <-}\StringTok{ }\NormalTok{teste }\OperatorTok{%>%}\StringTok{ }\KeywordTok{scale}\NormalTok{(}\DataTypeTok{center =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{scale =} \OtherTok{FALSE}\NormalTok{)}
+\NormalTok{X_center <-}\StringTok{ }\NormalTok{X }\OperatorTok{%>%}\StringTok{ }\KeywordTok{scale}\NormalTok{(}\DataTypeTok{center =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{scale =} \OtherTok{FALSE}\NormalTok{)}
+\NormalTok{y_center <-}\StringTok{ }\NormalTok{y }\OperatorTok{%>%}\StringTok{ }\KeywordTok{scale}\NormalTok{(}\DataTypeTok{center =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{scale =} \OtherTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#### RIDGE}
+\NormalTok{ridge_cv_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\KeywordTok{cv.glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha =} \DecValTok{0}\NormalTok{, }\DataTypeTok{nfolds =} \DecValTok{4}\NormalTok{)}
+\NormalTok{ridge_cv_}\DecValTok{4}\OperatorTok{$}\NormalTok{lambda.min}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8.239304
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ridge_cv_}\DecValTok{10}\NormalTok{ <-}\StringTok{ }\KeywordTok{cv.glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha =} \DecValTok{0}\NormalTok{, }\DataTypeTok{nfolds =} \DecValTok{10}\NormalTok{)}
+\NormalTok{ridge_cv_}\DecValTok{10}\OperatorTok{$}\NormalTok{lambda.min}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.040939
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ridge_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\KeywordTok{glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha =} \DecValTok{0}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ ridge_cv_}\DecValTok{4}\OperatorTok{$}\NormalTok{lambda.min, }\DataTypeTok{nfolds =} \DecValTok{4}\NormalTok{)}
+\KeywordTok{coef}\NormalTok{(ridge_}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 5 x 1 sparse Matrix of class "dgCMatrix"
+##                       s0
+## (Intercept) 89.242858424
+## Idade       -0.227254864
+## Peso        -0.002262255
+## Superfície   4.173924866
+## IMC         -0.009514524
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ridge_}\DecValTok{10}\NormalTok{ <-}\StringTok{ }\KeywordTok{glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha =} \DecValTok{0}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ ridge_cv_}\DecValTok{10}\OperatorTok{$}\NormalTok{lambda.min, }\DataTypeTok{nfolds =} \DecValTok{10}\NormalTok{)}
+\KeywordTok{coef}\NormalTok{(ridge_}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 5 x 1 sparse Matrix of class "dgCMatrix"
+##                      s0
+## (Intercept) 88.62866623
+## Idade       -0.32309803
+## Peso        -0.05594649
+## Superfície   9.83385144
+## IMC         -0.01517693
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X_teste <-}\StringTok{ }\KeywordTok{model.matrix}\NormalTok{(FC}\OperatorTok{~}\NormalTok{., teste)[,}\OperatorTok{-}\DecValTok{1}\NormalTok{]}
+\NormalTok{ridge_pred_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\NormalTok{ridge_}\DecValTok{4} \OperatorTok{%>%}\StringTok{ }\KeywordTok{predict}\NormalTok{(X_teste)}
+\NormalTok{ridge_pred_}\DecValTok{10}\NormalTok{ <-}\StringTok{ }\NormalTok{ridge_}\DecValTok{10} \OperatorTok{%>%}\StringTok{ }\KeywordTok{predict}\NormalTok{(X_teste)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{RMSE =} \KeywordTok{RMSE}\NormalTok{(ridge_pred_}\DecValTok{4}\NormalTok{, teste}\OperatorTok{$}\NormalTok{FC), }\DataTypeTok{Rsquare =} \KeywordTok{R2}\NormalTok{(ridge_pred_}\DecValTok{4}\NormalTok{, teste}\OperatorTok{$}\NormalTok{FC))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       RMSE          s0
+## 1 13.33922 0.004441017
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{RMSE =} \KeywordTok{RMSE}\NormalTok{(ridge_pred_}\DecValTok{10}\NormalTok{, teste}\OperatorTok{$}\NormalTok{FC), }\DataTypeTok{Rsquare =} \KeywordTok{R2}\NormalTok{(ridge_pred_}\DecValTok{10}\NormalTok{, teste}\OperatorTok{$}\NormalTok{FC))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      RMSE          s0
+## 1 13.6255 0.005752387
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{############## CENTRALIZADO #################}
+\NormalTok{ridge_cv_}\DecValTok{10}\NormalTok{_c <-}\StringTok{ }\KeywordTok{cv.glmnet}\NormalTok{(X_center, y_center, }\DataTypeTok{alpha =} \DecValTok{0}\NormalTok{, }\DataTypeTok{nfolds =} \DecValTok{10}\NormalTok{)}
+\NormalTok{ridge_cv_}\DecValTok{10}\NormalTok{_c}\OperatorTok{$}\NormalTok{lambda.min}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.698001
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ridge_}\DecValTok{10}\NormalTok{_c <-}\StringTok{ }\KeywordTok{glmnet}\NormalTok{(X_center, y_center, }\DataTypeTok{alpha =} \DecValTok{0}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ ridge_cv_}\DecValTok{10}\NormalTok{_c}\OperatorTok{$}\NormalTok{lambda.min)}
+\KeywordTok{coef}\NormalTok{(ridge_}\DecValTok{10}\NormalTok{_c)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 5 x 1 sparse Matrix of class "dgCMatrix"
+##                        s0
+## (Intercept) -4.889306e-15
+## Idade       -3.094313e-01
+## Peso        -3.955405e-02
+## Superfície   8.394145e+00
+## IMC         -1.425822e-02
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X_teste_c <-}\KeywordTok{model.matrix}\NormalTok{(FC}\OperatorTok{~}\NormalTok{., }\KeywordTok{as.data.frame}\NormalTok{(teste_center))[,}\OperatorTok{-}\DecValTok{1}\NormalTok{]}
+\NormalTok{ridge_pred_}\DecValTok{10}\NormalTok{_c <-}\StringTok{ }\NormalTok{ridge_}\DecValTok{10}\NormalTok{_c }\OperatorTok{%>%}\StringTok{ }\KeywordTok{predict}\NormalTok{ (X_teste_c)}
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{RMSE =} \KeywordTok{RMSE}\NormalTok{(ridge_pred_}\DecValTok{10}\NormalTok{_c, teste_center[,}\DecValTok{1}\NormalTok{]), }\DataTypeTok{Rsquare =} \KeywordTok{R2}\NormalTok{(ridge_pred_}\DecValTok{10}\NormalTok{_c, teste_center[,}\DecValTok{1}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       RMSE          s0
+## 1 13.54275 0.005299095
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{## LASSO}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{lasso_cv <-}\StringTok{ }\KeywordTok{cv.glmnet}\NormalTok{(X, y, }\DataTypeTok{aplha =} \DecValTok{1}\NormalTok{, }\DataTypeTok{lambda =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{nfolds =} \DecValTok{10}\NormalTok{)}
+\NormalTok{lasso_cv}\OperatorTok{$}\NormalTok{lambda.min}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3102045
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso <-}\StringTok{ }\KeywordTok{glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha =} \DecValTok{1}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ lasso_cv}\OperatorTok{$}\NormalTok{lambda.min, }\DataTypeTok{nfolds =} \DecValTok{10}\NormalTok{)}
+\KeywordTok{coef}\NormalTok{(lasso)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 5 x 1 sparse Matrix of class "dgCMatrix"
+##                      s0
+## (Intercept) 93.05809760
+## Idade       -0.34435836
+## Peso         .         
+## Superfície   5.76944515
+## IMC         -0.01535266
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso_pred <-}\StringTok{ }\NormalTok{lasso }\OperatorTok{%>%}\StringTok{ }\KeywordTok{predict}\NormalTok{(X_teste) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{as.vector}\NormalTok{()}
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{RMSE =} \KeywordTok{RMSE}\NormalTok{(lasso_pred, teste}\OperatorTok{$}\NormalTok{FC), }\DataTypeTok{Rsquare =} \KeywordTok{R2}\NormalTok{(lasso_pred, teste}\OperatorTok{$}\NormalTok{FC))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       RMSE     Rsquare
+## 1 13.70889 0.004094624
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{### LASSO CENTER}
+\NormalTok{lasso_cv_c <-}\StringTok{ }\KeywordTok{cv.glmnet}\NormalTok{(X_center, y_center, }\DataTypeTok{alpha =} \DecValTok{1}\NormalTok{, }\DataTypeTok{lambda =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{nfolds =} \DecValTok{10}\NormalTok{)}
+\NormalTok{lasso_cv_c}\OperatorTok{$}\NormalTok{lambda.min}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.7864815
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso_c <-}\StringTok{ }\KeywordTok{glmnet}\NormalTok{(X_center, y_center, }\DataTypeTok{alpha =} \DecValTok{1}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ lasso_cv_c}\OperatorTok{$}\NormalTok{lambda.min, }\DataTypeTok{nfolds =} \DecValTok{10}\NormalTok{)}
+\KeywordTok{coef}\NormalTok{(lasso_c)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 5 x 1 sparse Matrix of class "dgCMatrix"
+##                        s0
+## (Intercept) -4.554600e-15
+## Idade       -2.871060e-01
+## Peso         .           
+## Superfície   2.202969e+00
+## IMC         -1.073476e-02
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso_pred_c <-}\StringTok{ }\NormalTok{lasso_c }\OperatorTok{%>%}\StringTok{ }\KeywordTok{predict}\NormalTok{(X_teste_c)}
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{RMSE =} \KeywordTok{RMSE}\NormalTok{(lasso_pred_c, teste_center[,}\DecValTok{1}\NormalTok{]), }\DataTypeTok{Rsquare =} \KeywordTok{R2}\NormalTok{(lasso_pred_c, teste_center[,}\DecValTok{1}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       RMSE          s0
+## 1 13.37626 0.007072078
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{##TESTE CARET PACKAGE}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{lambda <-}\StringTok{ }\DecValTok{10}\OperatorTok{^}\KeywordTok{seq}\NormalTok{(}\OperatorTok{-}\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DataTypeTok{length=}\DecValTok{100}\NormalTok{)}
+ 
+\NormalTok{ridge1 <-}\StringTok{ }\KeywordTok{train}\NormalTok{(FC}\OperatorTok{~}\NormalTok{., }\DataTypeTok{data =}\NormalTok{ treino, }\DataTypeTok{method =} \StringTok{"glmnet"}\NormalTok{, }\DataTypeTok{trControl =} \KeywordTok{trainControl}\NormalTok{(}\StringTok{"cv"}\NormalTok{, }\DataTypeTok{number =} \DecValTok{10}\NormalTok{), }\DataTypeTok{tuneGrid =} \KeywordTok{expand.grid}\NormalTok{(}\DataTypeTok{alpha =} \DecValTok{0}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ lambda))}
+\KeywordTok{coef}\NormalTok{(ridge1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## NULL
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{coef}\NormalTok{(ridge1}\OperatorTok{$}\NormalTok{finalModel, ridge1}\OperatorTok{$}\NormalTok{bestTune}\OperatorTok{$}\NormalTok{lambda)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 5 x 1 sparse Matrix of class "dgCMatrix"
+##                       1
+## (Intercept) 89.59160600
+## Idade       -0.28938230
+## Peso        -0.02400578
+## Superfície   6.89423460
+## IMC         -0.01300621
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ridge1_pred <-}\StringTok{ }\NormalTok{ridge1 }\OperatorTok{%>%}\StringTok{ }\KeywordTok{predict}\NormalTok{(teste)}
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{RMSE =} \KeywordTok{RMSE}\NormalTok{(ridge1_pred, teste}\OperatorTok{$}\NormalTok{FC), }\DataTypeTok{Rsquare =} \KeywordTok{R2}\NormalTok{(ridge1_pred, teste}\OperatorTok{$}\NormalTok{FC))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       RMSE     Rsquare
+## 1 13.50915 0.004899463
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Lasso}
+\NormalTok{lasso1 <-}\StringTok{ }\KeywordTok{train}\NormalTok{(FC}\OperatorTok{~}\NormalTok{., }\DataTypeTok{data =}\NormalTok{ treino, }\DataTypeTok{method =} \StringTok{"glmnet"}\NormalTok{, }\DataTypeTok{trControl =} \KeywordTok{trainControl}\NormalTok{(}\StringTok{"cv"}\NormalTok{, }\DataTypeTok{number =} \DecValTok{10}\NormalTok{), }\DataTypeTok{tuneGrid =} \KeywordTok{expand.grid}\NormalTok{(}\DataTypeTok{alpha =} \DecValTok{1}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ lambda))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in nominalTrainWorkflow(x = x, y = y, wts = weights, info = trainInfo, :
+## There were missing values in resampled performance measures.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{coef}\NormalTok{(lasso1}\OperatorTok{$}\NormalTok{finalModel, lasso1}\OperatorTok{$}\NormalTok{bestTune}\OperatorTok{$}\NormalTok{lambda)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 5 x 1 sparse Matrix of class "dgCMatrix"
+##                       1
+## (Intercept) 93.02926654
+## Idade       -0.34493453
+## Peso         .         
+## Superfície   5.80537306
+## IMC         -0.01539929
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso1_pred <-}\StringTok{ }\NormalTok{lasso1 }\OperatorTok{%>%}\StringTok{ }\KeywordTok{predict}\NormalTok{(X_teste)}
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{RMSE =} \KeywordTok{RMSE}\NormalTok{(lasso1_pred, teste}\OperatorTok{$}\NormalTok{FC), }\DataTypeTok{Rsquare =} \KeywordTok{R2}\NormalTok{(lasso1_pred, teste}\OperatorTok{$}\NormalTok{FC))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       RMSE     Rsquare
+## 1 13.71245 0.004073534
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{## ELASTIC}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{elastic <-}\StringTok{ }\KeywordTok{train}\NormalTok{(FC}\OperatorTok{~}\NormalTok{., }\DataTypeTok{data=}\NormalTok{treino, }\DataTypeTok{method =} \StringTok{"glmnet"}\NormalTok{, }\DataTypeTok{trControl =} \KeywordTok{trainControl}\NormalTok{ (}\StringTok{"cv"}\NormalTok{, }\DataTypeTok{number =} \DecValTok{10}\NormalTok{), }\DataTypeTok{tuneLenght =} \DecValTok{10}\NormalTok{)}
+\NormalTok{elastic}\OperatorTok{$}\NormalTok{bestTune}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   alpha    lambda
+## 6  0.55 0.7648693
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{coef}\NormalTok{(elastic}\OperatorTok{$}\NormalTok{finalModel, elastic}\OperatorTok{$}\NormalTok{bestTune}\OperatorTok{$}\NormalTok{lambda)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 5 x 1 sparse Matrix of class "dgCMatrix"
+##                       1
+## (Intercept) 93.56645331
+## Idade       -0.32195205
+## Peso         .         
+## Superfície   4.72714977
+## IMC         -0.01375682
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pred <-}\StringTok{ }\NormalTok{elastic }\OperatorTok{%>%}\StringTok{ }\KeywordTok{predict}\NormalTok{(X_teste)}
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{RMSE =} \KeywordTok{RMSE}\NormalTok{(pred, teste}\OperatorTok{$}\NormalTok{FC), }\DataTypeTok{Rsquare =} \KeywordTok{R2}\NormalTok{(pred, teste}\OperatorTok{$}\NormalTok{FC))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       RMSE     Rsquare
+## 1 13.59182 0.004724556
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Comparação entre os modelos}
+\NormalTok{models <-}\StringTok{ }\KeywordTok{list}\NormalTok{(}\DataTypeTok{ridge =}\NormalTok{ ridge1, }\DataTypeTok{lasso =}\NormalTok{ lasso1, }\DataTypeTok{elastic =}\NormalTok{ elastic)}
+\KeywordTok{resamples}\NormalTok{(models) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summary}\NormalTok{( }\DataTypeTok{metric =} \StringTok{"RMSE"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## summary.resamples(object = ., metric = "RMSE")
+## 
+## Models: ridge, lasso, elastic 
+## Number of resamples: 10 
+## 
+## RMSE 
+##             Min.  1st Qu.   Median     Mean  3rd Qu.     Max. NA's
+## ridge   12.90020 14.09894 15.03255 15.30406 16.58566 18.38564    0
+## lasso   11.89390 12.27880 14.51016 14.95968 16.45962 21.39475    0
+## elastic 12.96403 14.05315 15.10991 15.33470 16.65877 18.40226    0
+\end{verbatim}
+
+\hypertarget{estimative-sem-a-variuxe1vel-peso-que-foi-suprimida-por-todos-os-modelos}{%
+\subsubsection{2² estimative, sem a variável PESO, que foi suprimida por
+todos os
+modelos}\label{estimative-sem-a-variuxe1vel-peso-que-foi-suprimida-por-todos-os-modelos}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ridge2 <-}\StringTok{ }\KeywordTok{train}\NormalTok{(FC}\OperatorTok{~}\NormalTok{., }\DataTypeTok{data =}\NormalTok{ treino, }\DataTypeTok{method =} \StringTok{"glmnet"}\NormalTok{, }\DataTypeTok{trControl =} \KeywordTok{trainControl}\NormalTok{(}\StringTok{"cv"}\NormalTok{, }\DataTypeTok{number =} \DecValTok{10}\NormalTok{), }\DataTypeTok{tuneGrid =} \KeywordTok{expand.grid}\NormalTok{(}\DataTypeTok{alpha =} \DecValTok{0}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ lambda))}
+\KeywordTok{coef}\NormalTok{(ridge2}\OperatorTok{$}\NormalTok{finalModel, ridge2}\OperatorTok{$}\NormalTok{bestTune}\OperatorTok{$}\NormalTok{lambda)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 5 x 1 sparse Matrix of class "dgCMatrix"
+##                       1
+## (Intercept) 87.99815655
+## Idade       -0.33217520
+## Peso        -0.07106073
+## Superfície  11.09655294
+## IMC         -0.01583161
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ridge2_pred <-}\StringTok{ }\NormalTok{ridge2 }\OperatorTok{%>%}\StringTok{ }\KeywordTok{predict}\NormalTok{(X_teste)}
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{RMSE =} \KeywordTok{RMSE}\NormalTok{(ridge2_pred, teste}\OperatorTok{$}\NormalTok{FC), }\DataTypeTok{Rsquare =} \KeywordTok{R2}\NormalTok{(ridge2_pred, teste}\OperatorTok{$}\NormalTok{FC))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       RMSE     Rsquare
+## 1 13.65961 0.006186351
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Lasso}
+\NormalTok{lasso2 <-}\StringTok{ }\KeywordTok{train}\NormalTok{(FC}\OperatorTok{~}\NormalTok{., }\DataTypeTok{data =}\NormalTok{ treino, }\DataTypeTok{method =} \StringTok{"glmnet"}\NormalTok{, }\DataTypeTok{trControl =} \KeywordTok{trainControl}\NormalTok{(}\StringTok{"cv"}\NormalTok{, }\DataTypeTok{number =} \DecValTok{10}\NormalTok{), }\DataTypeTok{tuneGrid =} \KeywordTok{expand.grid}\NormalTok{(}\DataTypeTok{alpha =} \DecValTok{1}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ lambda))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in nominalTrainWorkflow(x = x, y = y, wts = weights, info = trainInfo, :
+## There were missing values in resampled performance measures.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{coef}\NormalTok{(lasso2}\OperatorTok{$}\NormalTok{finalModel, lasso2}\OperatorTok{$}\NormalTok{bestTune}\OperatorTok{$}\NormalTok{lambda)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 5 x 1 sparse Matrix of class "dgCMatrix"
+##                       1
+## (Intercept) 92.79036503
+## Idade       -0.34971652
+## Peso         .         
+## Superfície   6.10325579
+## IMC         -0.01578498
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso2_pred <-}\StringTok{ }\NormalTok{lasso2 }\OperatorTok{%>%}\StringTok{ }\KeywordTok{predict}\NormalTok{(X_teste)}
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{RMSE =} \KeywordTok{RMSE}\NormalTok{(lasso2_pred, teste}\OperatorTok{$}\NormalTok{FC), }\DataTypeTok{Rsquare =} \KeywordTok{R2}\NormalTok{(lasso2_pred, teste}\OperatorTok{$}\NormalTok{FC))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       RMSE     Rsquare
+## 1 13.74229 0.003904338
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Elastic}
+\NormalTok{elastic2 <-}\StringTok{ }\KeywordTok{train}\NormalTok{(FC}\OperatorTok{~}\NormalTok{., }\DataTypeTok{data=}\NormalTok{treino, }\DataTypeTok{method =} \StringTok{"glmnet"}\NormalTok{, }\DataTypeTok{trControl =} \KeywordTok{trainControl}\NormalTok{ (}\StringTok{"cv"}\NormalTok{, }\DataTypeTok{number =} \DecValTok{10}\NormalTok{), }\DataTypeTok{tuneLenght =} \DecValTok{10}\NormalTok{)}
+\NormalTok{elastic2}\OperatorTok{$}\NormalTok{bestTune}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   alpha    lambda
+## 6  0.55 0.7648693
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{coef}\NormalTok{(elastic2}\OperatorTok{$}\NormalTok{finalModel, elastic2}\OperatorTok{$}\NormalTok{bestTune}\OperatorTok{$}\NormalTok{lambda)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 5 x 1 sparse Matrix of class "dgCMatrix"
+##                       1
+## (Intercept) 93.56645331
+## Idade       -0.32195205
+## Peso         .         
+## Superfície   4.72714977
+## IMC         -0.01375682
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{elastic2_pred <-}\StringTok{ }\NormalTok{elastic2 }\OperatorTok{%>%}\StringTok{ }\KeywordTok{predict}\NormalTok{(X_teste)}
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{RMSE =} \KeywordTok{RMSE}\NormalTok{(elastic2_pred, teste}\OperatorTok{$}\NormalTok{FC), }\DataTypeTok{Rsquare =} \KeywordTok{R2}\NormalTok{(elastic2_pred, teste}\OperatorTok{$}\NormalTok{FC))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       RMSE     Rsquare
+## 1 13.59182 0.004724556
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Comparação entre os modelos}
+\NormalTok{models <-}\StringTok{ }\KeywordTok{list}\NormalTok{(}\DataTypeTok{ridge =}\NormalTok{ ridge2, }\DataTypeTok{lasso =}\NormalTok{ lasso2, }\DataTypeTok{elastic =}\NormalTok{ elastic2)}
+\KeywordTok{resamples}\NormalTok{(models) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summary}\NormalTok{( }\DataTypeTok{metric =} \StringTok{"RMSE"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## summary.resamples(object = ., metric = "RMSE")
+## 
+## Models: ridge, lasso, elastic 
+## Number of resamples: 10 
+## 
+## RMSE 
+##             Min.  1st Qu.   Median     Mean  3rd Qu.     Max. NA's
+## ridge   12.51897 13.29356 14.58875 15.07815 15.76154 20.65603    0
+## lasso   11.22595 14.03156 15.13766 15.25086 17.66245 18.10294    0
+## elastic 12.98255 13.44180 14.82664 15.20689 16.79362 18.04886    0
+\end{verbatim}
+
+Nos resultados apresentados em cada um deles, o R2 é quase nulo, o que
+indica que não há relação linear entre a variável resposta e os
+preditores, tendo sido realizado como exercício, conforme indicado no
+problema. Agora vamos ver qual é a solução para o problema.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pairs}\NormalTok{(esforco, }\DataTypeTok{main=}\StringTok{"Gráfico de Dispersão"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ep3_files/figure-latex/unnamed-chunk-87-1.pdf}
+
+A figura acima apresenta o gráfico de dispersão que demonstra alta
+correlação entre as variáveis superfície e preso. Em conclusão, a
+variável resposta deve ser altamente correlacionada com as variáveis
+preditoras. Por outro lado\ldots{} a tabela abaixo mostra uma correlação
+muito pequena entre FC e as demais explicativas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cor}\NormalTok{(esforco)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                     FC        Idade        Peso   Superfície         IMC
+## FC          1.00000000 -0.221383321 -0.01669671  0.026683784 -0.07085545
+## Idade      -0.22138332  1.000000000  0.08497125 -0.009865203 -0.30465075
+## Peso       -0.01669671  0.084971253  1.00000000  0.934371123  0.11528915
+## Superfície  0.02668378 -0.009865203  0.93437112  1.000000000  0.21896345
+## IMC        -0.07085545 -0.304650746  0.11528915  0.218963446  1.00000000
+\end{verbatim}
+
+Portanto, observa-se que os modelos apresentam R² muito pequeno (aprox.,
+0,013), mostrando que a explicação da variação total do FC não é bem
+representada pelas explicativas.
+
+Para determinar as variáveis relevantes, será aplicado o método stepwise
+para a seleção de variáveis
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# método stepwise}
+\NormalTok{RLM.vacio=}\KeywordTok{lm}\NormalTok{(}\DataTypeTok{formula=}\NormalTok{FC}\OperatorTok{~}\DecValTok{1}\NormalTok{,esforco)}
+\NormalTok{RLM.Completo=}\KeywordTok{lm}\NormalTok{(}\DataTypeTok{formula =}\NormalTok{ FC}\OperatorTok{~}\NormalTok{.,esforco)}
+\NormalTok{RLM.stepwise=}\KeywordTok{step}\NormalTok{(RLM.vacio,}\DataTypeTok{scope=}\KeywordTok{list}\NormalTok{(}\DataTypeTok{lower=}\NormalTok{RLM.vacio,}\DataTypeTok{upper=}\NormalTok{RLM.Completo),}\DataTypeTok{direction =} \StringTok{"both"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Start:  AIC=694.75
+## FC ~ 1
+## 
+##              Df Sum of Sq   RSS    AIC
+## + Idade       1   1455.61 28244 690.37
+## <none>                    29700 694.75
+## + IMC         1    149.11 29551 696.11
+## + Superfície  1     21.15 29679 696.66
+## + Peso        1      8.28 29692 696.71
+## 
+## Step:  AIC=690.37
+## FC ~ Idade
+## 
+##              Df Sum of Sq   RSS    AIC
+## + IMC         1    626.18 27618 689.52
+## <none>                    28244 690.37
+## + Superfície  1     17.83 28226 692.29
+## + Peso        1      0.13 28244 692.37
+## - Idade       1   1455.61 29700 694.75
+## 
+## Step:  AIC=689.52
+## FC ~ Idade + IMC
+## 
+##              Df Sum of Sq   RSS    AIC
+## <none>                    27618 689.52
+## - IMC         1    626.18 28244 690.37
+## + Superfície  1    103.25 27515 691.04
+## + Peso        1     17.09 27601 691.44
+## - Idade       1   1932.68 29551 696.11
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(RLM.stepwise)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = FC ~ Idade + IMC, data = esforco)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -33.448  -8.480   0.398   8.516  41.432 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 101.888575   6.167486  16.520  < 2e-16 ***
+## Idade        -0.324968   0.110318  -2.946  0.00385 ** 
+## IMC          -0.012320   0.007348  -1.677  0.09611 .  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 14.92 on 124 degrees of freedom
+## Multiple R-squared:  0.07009,    Adjusted R-squared:  0.0551 
+## F-statistic: 4.673 on 2 and 124 DF,  p-value: 0.01105
+\end{verbatim}
+
+Conclusão: Para termas, um modelo de regressão, independentemente do
+método, é necessário fazer uma correlação entre os vários explicativos e
+os outros. Nos resultados obtidos, apenas uma variável preditora deve
+ser incluída e nenhum método de regularização é necessário, pois para
+aplicar esse método é necessário que as variáveis variáveis existam
+multicolinearidade.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{ex-4}{%
+\subparagraph{Ex 4}\label{ex-4}}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  Use a função \emph{rnorm()} (simula valores de uma distribuição
+  normal) do R para gerar um preditor X com n = 100 observações, bem
+  como um erro ε também de comprimento 100.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{); x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1]  1.100394807 -0.697519939  1.190090401 -0.579273716 -0.086931878
+##   [6] -1.078847743 -0.217906531  0.932273207  0.038218980  1.588471821
+##  [11]  0.168195124  0.532200489  0.540821229 -1.057008794  1.303966160
+##  [16]  1.502683284  1.359840728  0.288686419  0.293201151 -0.144520899
+##  [21]  0.456720010 -0.290628646  1.191523266 -0.807175774  0.701437156
+##  [26] -1.110483054 -0.939685279 -1.276306173  1.379532819 -0.356237098
+##  [31] -0.480328171  0.019330750 -0.748118810  0.547521220 -1.826377676
+##  [36] -0.299535961 -1.432630486  0.302525237  0.100926775 -1.758556084
+##  [41]  0.135254937 -0.240208160  0.461223145 -0.378103731  0.645534135
+##  [46] -0.935605391  0.728396973  0.329581204  0.185835786  0.357002389
+##  [51]  0.370109536 -1.348578736 -2.231611732  2.605784477 -1.095979216
+##  [56] -0.540120291 -0.218272901 -1.012464136 -1.290810280  0.229172221
+##  [61] -0.588397120 -1.298645004  0.477756579 -1.155199536  0.688786884
+##  [66]  0.312702606  0.266770718  0.157610136 -0.189838327  0.431458600
+##  [71] -0.625405719 -1.453570553  1.325899164  0.864764229 -1.621874696
+##  [76]  0.817167683  0.754495013 -0.930588636 -0.861727309  1.153676394
+##  [81] -0.372195642 -0.862804754 -0.863607949  1.092801037  1.344664442
+##  [86]  0.672867163 -0.589061449  0.181796776  1.175661972 -0.632810652
+##  [91]  0.241035564  0.809639242  0.165843943 -0.269709743  0.534511686
+##  [96] -1.229834505 -0.448783879  0.006336138  2.523247740 -0.724813605
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{e <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{); e}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1] -1.206009421  0.341151758  0.501553001  0.497712249 -1.116706691
+##   [6]  1.285373089  2.072102912  0.984008245  0.999996141 -0.938219649
+##  [11]  0.501480305  0.171093206 -0.611673871  0.367972544 -1.877576945
+##  [16]  0.352670203  0.687000910 -0.403461367 -0.722858764 -0.733938537
+##  [21] -0.194704375 -0.574307325 -1.184831174  0.140060240  0.754706204
+##  [26]  0.626894015 -0.892224246 -0.064791392 -0.261683366 -1.247238341
+##  [31]  0.325151116  0.680728765  0.528652616  0.349415568 -1.162508935
+##  [36]  0.131713745 -0.494464846 -1.239952935  0.514661287  1.372144069
+##  [41] -0.063206695  1.257781691 -0.971028448 -1.899759733  0.272902438
+##  [46] -0.694591166  1.021237122  0.283656852 -0.151930533 -0.857930311
+##  [51]  0.924328009 -0.871918142 -0.456883656  0.376881949 -0.334565005
+##  [56]  0.006028639  0.114051139  1.548881473  0.427582784  0.770194243
+##  [61]  2.000974441 -1.672943087  0.575102860 -0.308368825 -0.173719940
+##  [66]  0.584083984 -0.691221487 -0.517675617 -0.053782657  0.173063665
+##  [71] -0.500474918 -0.315786027  1.223932045  0.372421733 -0.903911786
+##  [76] -1.785908792  0.229355387 -0.723545326 -0.724079447 -0.291465420
+##  [81]  0.760061570  0.566227348 -1.155506297 -2.028048180 -0.910923290
+##  [86]  0.298274252 -0.607304975  0.749100025 -0.490609498 -0.714136107
+##  [91]  2.111702040  0.043830556  0.990276544  0.208349740  0.612278836
+##  [96] -1.906293903  1.127343383 -0.809419041 -0.269592265 -0.592681069
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Simule um vetor de resposta Y , de comprimento n = 100 de acordo com o
+  modelo \(Y =\beta + \beta_{1} x + \beta_{2}x\), na qual os parˆametros
+  βi s˜ao constantes de suaescolha.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Bi =}\StringTok{ }\DecValTok{5}
+\NormalTok{y <-}\StringTok{ }\NormalTok{Bi }\OperatorTok{+}\StringTok{ }\NormalTok{Bi}\OperatorTok{*}\NormalTok{x }\OperatorTok{+}\StringTok{ }\NormalTok{Bi}\OperatorTok{*}\NormalTok{x}\OperatorTok{^}\DecValTok{2} \OperatorTok{+}\StringTok{ }\NormalTok{Bi}\OperatorTok{*}\NormalTok{x}\OperatorTok{^}\DecValTok{3} \OperatorTok{+}\StringTok{ }\NormalTok{e}
+\KeywordTok{head}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 22.012477  2.589386 26.961296  3.307234  3.483135  0.432275
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Considere o modelo de (b), agora com os βi e ε desconhecidos, X como
+  em (a) Y como em (b). Qual seria o melhor modelo usando R2 ajustado e
+  BIC?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{### polinomial de grau 3}
+ 
+\NormalTok{modelo4 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(y}\OperatorTok{~}\KeywordTok{poly}\NormalTok{(x, }\DecValTok{3}\NormalTok{))}
+\KeywordTok{summary}\NormalTok{(modelo4)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = y ~ poly(x, 3))
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.96568 -0.66953  0.05475  0.58073  2.08070 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)   9.72416    0.08976  108.34   <2e-16 ***
+## poly(x, 3)1 169.51647    0.89756  188.86   <2e-16 ***
+## poly(x, 3)2  97.89810    0.89756  109.07   <2e-16 ***
+## poly(x, 3)3  87.36743    0.89756   97.34   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.8976 on 96 degrees of freedom
+## Multiple R-squared:  0.9983, Adjusted R-squared:  0.9983 
+## F-statistic: 1.901e+04 on 3 and 96 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{BIC}\NormalTok{(modelo4)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 281.1166
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# polinomial de grau 2}
+
+\NormalTok{modelo4_}\DecValTok{2}\NormalTok{ <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(y}\OperatorTok{~}\KeywordTok{poly}\NormalTok{(x, }\DecValTok{2}\NormalTok{))}
+\KeywordTok{summary}\NormalTok{(modelo4_}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = y ~ poly(x, 2))
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -43.098  -5.306   0.351   5.731  37.443 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)   9.7242     0.8916   10.91   <2e-16 ***
+## poly(x, 2)1 169.5165     8.9156   19.01   <2e-16 ***
+## poly(x, 2)2  97.8981     8.9156   10.98   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 8.916 on 97 degrees of freedom
+## Multiple R-squared:  0.8325, Adjusted R-squared:  0.829 
+## F-statistic:   241 on 2 and 97 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{BIC}\NormalTok{(modelo4_}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 736.724
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Para o modelo como em (c), obtenha os estimadores ridge e lasso. Use
+  VC para selecionar o valor ótimo de \(\lambda\)
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(readxl)}
+\NormalTok{exercicio4 <-}\StringTok{ }\KeywordTok{read_excel}\NormalTok{(}\KeywordTok{here}\NormalTok{(}\StringTok{'ep3/ex4'}\NormalTok{, }\StringTok{'exercicio4.xlsx'}\NormalTok{))}
+\NormalTok{exercicio4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 100 x 4
+##         y        x        x2           x3
+##     <dbl>    <dbl>     <dbl>        <dbl>
+##  1  3.98   0.00857 0.0000735  0.000000630
+##  2  2.12  -0.597   0.356     -0.213      
+##  3 10.8    0.578   0.334      0.193      
+##  4 -4.72   0.227   0.0517     0.0118     
+##  5  5.28  -1.33    1.77      -2.34       
+##  6  4.88  -2.05    4.21      -8.65       
+##  7 22.8   -0.139   0.0193    -0.00268    
+##  8  0.440 -0.237   0.0560    -0.0133     
+##  9  3.52   1.10    1.21       1.34       
+## 10 -0.204 -1.03    1.07      -1.10       
+## # ... with 90 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{train_samples <-}\StringTok{ }\NormalTok{exercicio4}\OperatorTok{$}\NormalTok{y }\OperatorTok{%>%}\StringTok{ }\KeywordTok{createDataPartition}\NormalTok{(}\DataTypeTok{p=}\FloatTok{0.8}\NormalTok{, }\DataTypeTok{list =} \OtherTok{FALSE}\NormalTok{)}
+\NormalTok{treino <-}\StringTok{ }\NormalTok{exercicio4[}\KeywordTok{c}\NormalTok{(train_samples), ]}
+\NormalTok{teste <-}\StringTok{ }\NormalTok{exercicio4[}\OperatorTok{-}\NormalTok{train_samples, ]}
+\NormalTok{X <-}\StringTok{ }\KeywordTok{model.matrix}\NormalTok{(y}\OperatorTok{~}\NormalTok{., treino)[,}\OperatorTok{-}\DecValTok{1}\NormalTok{]}
+\NormalTok{y <-}\StringTok{ }\NormalTok{treino}\OperatorTok{$}\NormalTok{y}
+\CommentTok{############ RIDGE ##########}
+\NormalTok{ridge_cv <-}\StringTok{ }\KeywordTok{cv.glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha=}\DecValTok{0}\NormalTok{)}
+\NormalTok{ridge_cv}\OperatorTok{$}\NormalTok{lambda.min}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2594.669
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ridge <-}\StringTok{ }\KeywordTok{glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha =} \DecValTok{0}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ ridge_cv}\OperatorTok{$}\NormalTok{lambda.min)}
+\KeywordTok{coef}\NormalTok{(ridge)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 4 x 1 sparse Matrix of class "dgCMatrix"
+##                       s0
+## (Intercept)  9.711473603
+## x           -0.001454569
+## x2          -0.019468473
+## x3           0.001385386
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X_teste <-}\StringTok{ }\KeywordTok{model.matrix}\NormalTok{(y}\OperatorTok{~}\NormalTok{., teste)[,}\OperatorTok{-}\DecValTok{1}\NormalTok{]}
+\NormalTok{ridge_pred <-}\StringTok{ }\NormalTok{ridge }\OperatorTok{%>%}\StringTok{ }\KeywordTok{predict}\NormalTok{(X_teste)}
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{RMSE =} \KeywordTok{RMSE}\NormalTok{(ridge_pred, teste}\OperatorTok{$}\NormalTok{y), }\DataTypeTok{Rsquared =} \KeywordTok{R2}\NormalTok{(ridge_pred, teste}\OperatorTok{$}\NormalTok{y))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       RMSE         s0
+## 1 11.90771 0.05950987
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#### Lasso}
+\NormalTok{lasso_cv <-}\StringTok{ }\KeywordTok{cv.glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha=}\DecValTok{1}\NormalTok{)}
+\NormalTok{lasso_cv}\OperatorTok{$}\NormalTok{lambda.min}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.352863
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso <-}\StringTok{ }\KeywordTok{glmnet}\NormalTok{(X, y, }\DataTypeTok{alpha =} \DecValTok{1}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ lasso_cv}\OperatorTok{$}\NormalTok{lambda.min)}
+\KeywordTok{coef}\NormalTok{(lasso)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 4 x 1 sparse Matrix of class "dgCMatrix"
+##                    s0
+## (Intercept) 11.450511
+## x            .       
+## x2          -1.656366
+## x3           .
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso_pred <-}\StringTok{ }\NormalTok{lasso }\OperatorTok{%>%}\StringTok{ }\KeywordTok{predict}\NormalTok{(X_teste)}
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{RMSE =} \KeywordTok{RMSE}\NormalTok{(lasso_pred, teste}\OperatorTok{$}\NormalTok{y), }\DataTypeTok{Rsquared =} \KeywordTok{R2}\NormalTok{(lasso_pred, teste}\OperatorTok{$}\NormalTok{y))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       RMSE         s0
+## 1 12.50196 0.05840277
+\end{verbatim}
+
+\hypertarget{conclusuxe3o}{%
+\subparagraph{Conclusão:}\label{conclusuxe3o}}
+
+Ao aplicar a regressão Ridge, os coeficientes de x e x3 são praticamente
+nulos e o R2 é quase zero, isso mostra que é importante conhecer
+diferentes técnicas de previsão. No caso da regularização Lasso,
+acontece o mesmo. Deve-se lembrar que os métodos de regularização são
+aplicados quando há um problema de multicolinearidade.
+
+\end{document}
